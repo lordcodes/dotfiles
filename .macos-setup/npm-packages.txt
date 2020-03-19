@@ -1,0 +1,6 @@
+avocado
+git-open
+git-recent
+npm
+pure-prompt
+trash-cli

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ## Backup Homebrew installed packages, casks, fonts and Mac App Store apps
-function backupbrew() {
+function brewbackup() {
   cwd=$(pwd)
   cd ~/.macos-setup
   brew bundle dump --force
@@ -43,6 +43,22 @@ function gitfirstcommitdate() {
 ## mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
+## Backup globally installed NPM packages
+function npmbackup() {
+  cwd=$(pwd)
+  cd ~/.macos-setup
+  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > npm-packages.txt
+  cd $cwd
+}
+
+## Restore globally install NPM packages from backed up file
+function npmrestore() {
+  cwd=$(pwd)
+  cd ~/.macos-setup
+  xargs npm install --global < npm-packages.txt
+  cd $cwd
+}
+
 ## Get software updates, update Ruby gems, homebrew, homebrew casks, npm and npm packages
 function updateall() {
   sudo softwareupdate -i -a
@@ -54,5 +70,10 @@ function updateall() {
 
   npm update npm -g
   npm update -g
+
+  gem update --system
   sudo gem update
+
+  pip install --upgrade setuptools
+  pip install --upgrade pip
 }

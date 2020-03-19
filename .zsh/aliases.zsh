@@ -52,6 +52,9 @@ alias rmxcodederiveddata="rm -rf ~/Library/Developer/Xcode/DerivedData/*"
 ## Bundler
 alias bex="bundle exec"
 
+## List globally installed NPM packages
+alias npmlistg="npm list -g --depth 0"
+
 ## Update Vim ultimate configuration
 alias updateultimatevim='cd ~/.vim_runtime && git pull --rebase && cd -'
 
