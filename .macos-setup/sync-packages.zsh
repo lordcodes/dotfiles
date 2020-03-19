@@ -2,9 +2,9 @@
 
 source ~/.zsh/*
 
-brewbackup
-npmbackup
-pipbackup
+brewbackup()
+npmbackup()
+pipbackup()
 
 config add ~/.macos-setup/*
 config commit -m "Update installed packages"
