@@ -59,6 +59,22 @@ function npmrestore() {
   cd $cwd
 }
 
+## Backup Python modules installed via pip
+function pipbackup() {
+  cwd=$(pwd)
+  cd ~/.macos-setup
+  pip freeze > pip-packages.txt
+  cd $cwd
+}
+
+## Restore Python modules via pip
+function piprestore() {
+  cwd=$(pwd)
+  cd ~/.macos-setup
+  pip install -r pip-packages.txt
+  cd $cwd
+}
+
 ## Get software updates, update Ruby gems, homebrew, homebrew casks, npm and npm packages
 function updateall() {
   sudo softwareupdate -i -a
