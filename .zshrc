@@ -20,6 +20,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 # User configuration
-source ~/zsh/env.zsh
-source ~/zsh/aliases.zsh
-source ~/zsh/functions.zsh
+source ~/.zsh/env.zsh
+source ~/.zsh/aliases.zsh
+source ~/.zsh/functions.zsh
