@@ -7,4 +7,6 @@ echo "Ensure pip is up-to-date…"
 pip install --upgrade pip
 
 echo "Installing Python pip modules…"
-piprestore
+piprestore()
+
+echo "Python setup!"

@@ -20,7 +20,9 @@ echo "Installing Homebrew Bundle…"
 brew tap Homebrew/bundle
 
 echo "Installing Homebrew packages, casks, fonts and Mac App Store apps…"
-brew bundle
+brewrestore()
 
 echo "Brew cleaning up…"
 brew cleanup
+
+echo "Brew setup!"

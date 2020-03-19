@@ -1,10 +1,20 @@
 #!/bin/zsh
 
-## Backup Homebrew installed packages, casks, fonts and Mac App Store apps
+## Backup Homebrew installed packages, casks, fonts and MAS apps
 function brewbackup() {
+  echo "Backing up Brew packages, casks, fonts and MAS apps…"
   cwd=$(pwd)
   cd ~/.macos-setup
   brew bundle dump --force
+  cd $cwd
+}
+
+## Restore Homebrew installed packages, casks, fonts and MAS apps
+function brewrestore() {
+  echo "Restoring Brew packages, casks, fonts and MAS apps…"
+  cwd=$(pwd)
+  cd ~/.macos-setup
+  brew bundle
   cd $cwd
 }
 
@@ -45,6 +55,7 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 ## Backup globally installed NPM packages
 function npmbackup() {
+  echo "Backing up global NPM packages…"
   cwd=$(pwd)
   cd ~/.macos-setup
   npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > npm-packages.txt
@@ -53,6 +64,7 @@ function npmbackup() {
 
 ## Restore globally install NPM packages from backed up file
 function npmrestore() {
+  echo "Restoring global NPM packages from backup…"
   cwd=$(pwd)
   cd ~/.macos-setup
   xargs npm install --global < npm-packages.txt
@@ -61,6 +73,7 @@ function npmrestore() {
 
 ## Backup Python modules installed via pip
 function pipbackup() {
+  echo "Backing up Python pip modules…"
   cwd=$(pwd)
   cd ~/.macos-setup
   pip freeze > pip-packages.txt
@@ -69,6 +82,7 @@ function pipbackup() {
 
 ## Restore Python modules via pip
 function piprestore() {
+  echo "Restoring Python pip modules from backup…"
   cwd=$(pwd)
   cd ~/.macos-setup
   pip install -r pip-packages.txt

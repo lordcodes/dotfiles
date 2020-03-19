@@ -1,4 +1,6 @@
 #!/bin/zsh
 
 echo "Installing global NPM packages…"
-npmrestore
+npmrestore()
+
+echo "NPM setup!"

@@ -5,3 +5,5 @@ RUBY_GEMS=(
     bundler
 )
 sudo gem install ${RUBY_GEMS[@]}
+
+echo "Ruby setup!"

@@ -4,16 +4,18 @@ echo "Installing Xcode command line tools…"
 xcode-select --install
 
 echo "Setting up Homebrew…"
-source setup-brew
+source setup-brew.zsh
 
 echo "Setting up Ruby…"
-source setup-ruby
+source setup-ruby.zsh
 
 echo "Setting up npm…"
-source setup-npm
+source setup-npm.zsh
 
 echo "Setting up Python…"
-source setup-python
+source setup-python.zsh
 
 echo "Updating everything…"
-updateall
+updateall()
+
+echo "Packages setup!"

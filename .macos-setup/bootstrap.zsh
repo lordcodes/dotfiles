@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-source setup-packages
+source setup-packages.zsh
