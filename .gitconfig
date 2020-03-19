@@ -1,0 +1,96 @@
+[alias]
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format
+	s = status -s
+
+	# Commit, combining with last commit
+	combine = commit --amend --no-edit --allow-empty
+
+	# Show the diff between the latest commit and the current state
+	difflast = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+	# Switch to a branch, creating it if necessary
+	go = checkout -B
+
+	# Show verbose output about things
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	# View last commit
+	last = log -1 HEAD
+
+	# Show unmerged branches
+	unmerged = branch -a --no-merged
+
+	# Show all ignored files
+	allignored = ls-files --others -i --exclude-standard
+
+	# Show last time each local branch was changed
+	branchlastchange = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - (%(color:green)%(committerdate:relative)%(color:reset))'
+
+	co = checkout
+	cherry = cherry-pick
+	fpush = push --force
+	undocommit = reset HEAD~
+	unstage = reset HEAD --
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[color]
+	ui = auto
+
+[commit]
+	template = ~/.stCommitMsg
+
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	
+[credential]
+	helper = osxkeychain
+
+[fetch]
+	prune = true
+	
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[help]
+	autocorrect = 1
+
+[log]
+	date = relative
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+	
+[protocol]
+	version = 2
+
+[push]
+	default = current
+	followTags = true
+
+[stash]
+	showPatch = true
+
+[user]
+	name = Andrew Lord
+	email = andrew@lordcodes.com
+	useConfigOnly = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
