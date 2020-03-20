@@ -6,6 +6,7 @@ function brewbackup() {
   cwd=$(pwd)
   cd ~/.macos-setup
   brew bundle dump --force
+  config add ~/.macos-setup/Brewfile
   cd $cwd
 }
 
@@ -59,6 +60,7 @@ function npmbackup() {
   cwd=$(pwd)
   cd ~/.macos-setup
   npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > npm-packages.txt
+  config add ~/.macos-setup/npm-packages.txt
   cd $cwd
 }
 
@@ -77,6 +79,7 @@ function pipbackup() {
   cwd=$(pwd)
   cd ~/.macos-setup
   pip freeze > pip-packages.txt
+  config add ~/.macos-setup/pip-packages.txt
   cd $cwd
 }
 
@@ -87,6 +90,17 @@ function piprestore() {
   cd ~/.macos-setup
   pip install -r pip-packages.txt
   cd $cwd
+}
+
+function syncpackages() {
+  brewbackup()
+  npmbackup()
+  pipbackup()
+
+  config commit -m "Update installed packages"
+  config push -u origin master
+
+  echo "Packages synced!"
 }
 
 ## Get software updates, update Ruby gems, homebrew, homebrew casks, npm and npm packages
