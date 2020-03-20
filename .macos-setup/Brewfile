@@ -83,7 +83,6 @@ cask "unity-hub"
 cask "unshaky"
 cask "visual-studio-code"
 cask "webpquicklook"
-cask "workbench"
 cask "zoomus"
 mas "Battery Monitor", id: 836505650
 mas "Dato", id: 1470584107
