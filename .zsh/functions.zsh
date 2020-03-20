@@ -92,10 +92,11 @@ function piprestore() {
   cd $cwd
 }
 
+## Backup all packages and upload changes
 function syncpackages() {
-  brewbackup()
-  npmbackup()
-  pipbackup()
+  brewbackup
+  npmbackup
+  pipbackup
 
   config commit -m "Update installed packages"
   config push -u origin master
