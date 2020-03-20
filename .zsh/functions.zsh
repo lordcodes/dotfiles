@@ -27,6 +27,11 @@ cdf() {
 ## Sizes of directories
 function dirsizes() { find . -maxdepth 1 -type d -mindepth 1 -exec du -hs {} \; }
 
+## Eject all mountable volumes
+function ejectall() {
+  osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
+}
+
 ## Determine size of a file or total size of a directory
 function filesize() {
   if du -b /dev/null > /dev/null 2>&1; then
