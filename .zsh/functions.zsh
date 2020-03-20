@@ -104,6 +104,14 @@ function syncpackages() {
   echo "Packages synced!"
 }
 
+## `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+## the `.git` directory, listing directories first. The output gets piped into
+## `less` with options to preserve color and line numbers, unless the output is
+## small enough for one screen.
+function trees() {
+	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
 ## Get software updates, update Ruby gems, homebrew, homebrew casks, npm and npm packages
 function updateall() {
   sudo softwareupdate -i -a
