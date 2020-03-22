@@ -329,6 +329,25 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 echo "Setting up Dock and hot corners…"
 
+dockutil --no-restart --remove all
+dockutil --no-restart --add "/Applications/Safari.app"
+dockutil --no-restart --add "/Applications/Google Chrome.app"
+dockutil --no-restart --add "/System/Applications/Notes.app"
+dockutil --no-restart --add "/Applications/GetBusy.app"
+dockutil --no-restart --add "/Applications/GetBusyTest.app"
+dockutil --no-restart --add "/Applications/Trello.app"
+dockutil --no-restart --add "/System/Applications/Mail.app"
+dockutil --no-restart --add "/Applications/Microsoft Outlook.app"
+dockutil --no-restart --add "/Applications/Slack.app"
+dockutil --no-restart --add "/Applications/Hyper.app"
+dockutil --no-restart --add "/Applications/Fork.app"
+dockutil --no-restart --add "/Applications/Android Studio.app"
+dockutil --no-restart --add "/Applications/Xcode-11.3.1.app"
+dockutil --no-restart --add "/Applications/Spotify.app"
+dockutil --no-restart --add "/Applications/Visual Studio Code.app"
+
+dockutil --no-restart --add "/Applications" --view grid --display folder --section others
+
 # Disable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool false
 
